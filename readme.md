@@ -271,3 +271,7 @@ flowchart TD
     Service --> Controller
     Controller -->|HTTP Response (JSON)| Client
 ```
+
+## 📜 License
+
+Proyek ini dilisensikan di bawah **MIT License** – lihat file [LICENSE](./LICENSE) untuk detail lebih lanjut.
