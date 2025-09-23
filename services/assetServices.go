@@ -1,4 +1,4 @@
-package assetservices
+package services
 
 import (
 	"money-management-be/models"

@@ -12,9 +12,10 @@ func SendError(w http.ResponseWriter, message string, err string, code int) {
 	w.WriteHeader(code)
 
 	response := utils.ErrorResponse{
-		Status:  "error",
-		Message: message,
-		Error:   err,
+		Status:     "error",
+		Message:    message,
+		Error:      err,
+		StatusCode: code,
 	}
 
 	json.NewEncoder(w).Encode(response)

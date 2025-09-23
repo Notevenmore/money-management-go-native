@@ -9,6 +9,10 @@ type IncomeRepository struct {
 	DB *sql.DB
 }
 
+func NewIncomeRepositories(db *sql.DB) *IncomeRepository {
+	return &IncomeRepository{DB: db}
+}
+
 func (r *IncomeRepository) GetAll() ([]models.Income, error) {
 	rows, err := r.DB.Query("SELECT id, name, nominal, date, category FROM incomes")
 

@@ -9,6 +9,10 @@ type OutcomeRepository struct {
 	DB *sql.DB
 }
 
+func NewOutcomeRepositories(db *sql.DB) *OutcomeRepository {
+	return &OutcomeRepository{DB: db}
+}
+
 func (r *OutcomeRepository) GetAll() ([]models.Outcome, error) {
 	rows, err := r.DB.Query("SELECT id, name, nominal, date, category FROM outcomes")
 

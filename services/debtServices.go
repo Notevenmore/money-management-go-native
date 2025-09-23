@@ -1,4 +1,4 @@
-package debtservices
+package services
 
 import (
 	"money-management-be/models"
@@ -22,6 +22,6 @@ func (s *DebtServices) GetAllDebt() ([]models.Debt, error) {
 	return debts, nil
 }
 
-func (s *DebtServices) CreateIncome(debt models.Debt) error {
+func (s *DebtServices) CreateDebt(debt models.Debt) error {
 	return s.Repo.Create(debt)
 }

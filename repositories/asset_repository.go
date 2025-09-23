@@ -9,6 +9,10 @@ type AssetRepository struct {
 	DB *sql.DB
 }
 
+func NewAssetRepositories(db *sql.DB) *AssetRepository {
+	return &AssetRepository{DB: db}
+}
+
 func (r *AssetRepository) GetAll() ([]models.Assets, error) {
 	rows, err := r.DB.Query("SELECT id, name, is_reusable FROM assets")
 

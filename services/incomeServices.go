@@ -1,4 +1,4 @@
-package incomeservices
+package services
 
 import (
 	"money-management-be/models"

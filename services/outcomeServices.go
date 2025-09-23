@@ -1,4 +1,4 @@
-package outcomeservices
+package services
 
 import (
 	"money-management-be/models"

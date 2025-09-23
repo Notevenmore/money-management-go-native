@@ -25,7 +25,7 @@ func main() {
 	migrations.Migrate()
 
 	// inisialisasi routing
-	mux := routes.InitRoutes()
+	mux := routes.InitRoutes(database.DB)
 
 	// jalankan REST API
 	log.Println("Server running at http://" + appServer + appPort)

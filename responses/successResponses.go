@@ -12,9 +12,10 @@ func SendSuccess(w http.ResponseWriter, message string, data interface{}) {
 	w.WriteHeader(http.StatusOK)
 
 	response := utils.SuccessResponse{
-		Status:  "error",
-		Message: message,
-		Data:    data,
+		Status:     "Success",
+		Message:    message,
+		Data:       data,
+		StatusCode: http.StatusAccepted,
 	}
 
 	json.NewEncoder(w).Encode(response)

@@ -9,6 +9,10 @@ type DebtRepository struct {
 	DB *sql.DB
 }
 
+func NewDebtRepositories(db *sql.DB) *DebtRepository {
+	return &DebtRepository{DB: db}
+}
+
 func (r *DebtRepository) GetAll() ([]models.Debt, error) {
 	rows, err := r.DB.Query("SELECT id, name, nominal, deadline, is_finish FROM debts")
 
