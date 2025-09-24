@@ -44,6 +44,7 @@ go mod tidy
 APP_PORT= #Port REST API
 APP_SERVER= #Server Domain REST API (Default localhost)
 APP_ORIGIN= #Allowed Request Domain port
+APP_TYPE= # "http:// or https://"
 
 DB_CONNECTION=pgsql
 DB_HOST= # Database Domain

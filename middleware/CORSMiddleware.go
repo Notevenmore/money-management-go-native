@@ -10,10 +10,12 @@ func CORSMiddleware(next http.Handler) http.Handler {
 
 		appOrigin := os.Getenv("APP_ORIGIN")
 		appServer := os.Getenv("APP_SERVER")
-		if appOrigin == "" || appServer == "" {
+		appType := os.Getenv("APP_TYPE")
+
+		if appOrigin == "" || appServer == "" || appType == "" {
 			appOrigin = "*"
 		} else {
-			appOrigin = appServer + appOrigin
+			appOrigin = appType + appServer + appOrigin
 		}
 
 		w.Header().Set("Access-Control-Allow-Origin", appOrigin)
