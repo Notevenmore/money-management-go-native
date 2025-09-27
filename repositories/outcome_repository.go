@@ -32,7 +32,14 @@ func (r *OutcomeRepository) GetAll() ([]models.Outcome, error) {
 	return outcomes, nil
 }
 
-func (r *OutcomeRepository) Create(outcome models.Outcome) error {
-	_, err := r.DB.Exec("INSERT INTO outcomes (name, nominal, date, category) VALUES ($1, $2, $3, $4)", outcome.Name, outcome.Nominal, outcome.Date, outcome.Category)
-	return err
+func (r *OutcomeRepository) Create(outcome *models.Outcome) error {
+	query := `INSERT INTO outcomes (name, nominal, date, category) VALUES ($1, $2, $3, $4) RETURNING id`
+
+	return r.DB.QueryRow(
+		query,
+		outcome.Name,
+		outcome.Nominal,
+		outcome.Date,
+		outcome.Category,
+	).Scan(&outcome.ID)
 }

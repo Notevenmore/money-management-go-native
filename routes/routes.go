@@ -31,7 +31,7 @@ func InitRoutes(db *sql.DB) *http.ServeMux {
 	debtRepo := repositories.NewDebtRepositories(db)
 	debtService := services.NewDebtServices(debtRepo)
 	debtController := controllers.NewDebtController(debtService)
-	mux.Handle("/tagihan/", http.StripPrefix("/tagihan", middleware.CORSMiddleware(InitDebtsRoutes(debtController))))
+	mux.Handle("/tagihan/", http.StripPrefix("/tagihan", middleware.CORSMiddleware(InitDebtsRoutes(debtController, db))))
 
 	return mux
 }

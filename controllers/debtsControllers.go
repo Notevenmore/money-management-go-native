@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"database/sql"
 	"encoding/json"
 	"net/http"
 
@@ -44,13 +45,18 @@ func (Controller *DebtControllers) CreateHandler(w http.ResponseWriter, r *http.
 	responses.SendSuccess(w, "Data Tagihan berhasil ditambahkan", nil)
 }
 
-// func UpdateHandler(w http.ResponseWriter, r *http.Request, id string) {
-// 	response := map[string]interface{}{
-// 		"message": "Hello Update Handler Debts",
-// 		"status":  true,
-// 	}
+func (Controller *DebtControllers) UpdateHandler(w http.ResponseWriter, r *http.Request, id string, db *sql.DB) {
+	var debt models.Debt
 
-// 	w.Header().Set("Content-Type", "application/json")
-// 	w.WriteHeader(http.StatusOK)
-// 	json.NewEncoder(w).Encode(response)
-// }
+	if err := json.NewDecoder(r.Body).Decode(&debt); err != nil {
+		http.Error(w, "Invalid request body", http.StatusBadRequest)
+		return
+	}
+
+	if err := Controller.Service.UpdateDebt(debt, id, db); err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	responses.SendSuccess(w, "Data Tagihan berhasil diupdate", nil)
+}

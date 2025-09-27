@@ -23,5 +23,11 @@ func (s *OutcomeServices) GetAllOutcomes() ([]models.Outcome, error) {
 }
 
 func (s *OutcomeServices) CreateOutcome(outcome models.Outcome) error {
-	return s.Repo.Create(outcome)
+	outcomes := &models.Outcome{
+		Name:     outcome.Name,
+		Nominal:  outcome.Nominal,
+		Date:     outcome.Date,
+		Category: outcome.Category,
+	}
+	return s.Repo.Create(outcomes)
 }

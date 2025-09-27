@@ -36,3 +36,9 @@ func (r *DebtRepository) Create(debt models.Debt) error {
 	_, err := r.DB.Exec("INSERT INTO debts (name, nominal, deadline) VALUES ($1, $2, $3)", debt.Name, debt.Nominal, debt.Deadline)
 	return err
 }
+
+func (r *DebtRepository) Update(debt models.Debt, id string) error {
+	_, err := r.DB.Exec("UPDATE debts SET is_finish = $1 WHERE (id = $2)", debt.IsFinish, id)
+
+	return err
+}
