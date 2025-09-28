@@ -168,7 +168,7 @@ POST /pengaluaran/     # Create New Outcomes
 curl 
   -X GET 
   -H "Content-Type: application/json"
-/pengeluaran/
+/pengeluaran
 ```
 #### 🧪 Example Response (cURL Get Outcomes)
 ```bash
@@ -219,7 +219,7 @@ POST /tagihan/     # Create New Debts
 curl 
   -X GET 
   -H "Content-Type: application/json" 
-  http://10.4.169.118:8080/tagihan/
+  /tagihan
 ```
 #### 🧪 Example Response (cURL Get Debts)
 ```bash
@@ -249,13 +249,33 @@ curl
     "deadline":"2025-06-23T14:18:08Z", 
     "is_finish": false
   }' 
-  http://10.4.169.118:8080/tagihan/ 
+  /tagihan
 ```
 #### 🧪 Example Response (cURL Create Debts)
 ```bash
 {
   "status":"Success",
   "message":"Data Tagihan berhasil ditambahkan",
+  "status_code":202
+}
+```
+
+#### 🧪 Example Request (cURL Update Debts)
+```bash
+curl 
+  -X PUT 
+  -H "Content-Type: application/json" 
+  -d '{ 
+    "name": "Shopee Pay Later", 
+    "nominal": 200000, 
+    "is_finish": true 
+  }' /tagihan/1
+```
+#### 🧪 Example Response (cURL Update Debts)
+```bash
+{
+  "status":"Success",
+  "message":"Data Tagihan berhasil diupdate",
   "status_code":202
 }
 ```
